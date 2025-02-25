@@ -1,0 +1,26 @@
+.post-container {
+    width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background: #fff;
+    text-align: center;
+}
+
+.post-content {
+    padding: 10px;
+    font-size: 14px;
+    color: #333;
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+}
+
+.no-post-message {
+    font-style: italic;
+    color: #777;
+}
