@@ -11,5 +11,6 @@
             </mat-action-row>
         </mat-expansion-panel>
     </mat-accordion>
-    <p *ngIf="posts.length <= 0" class="no-post-message">No posts added yet</p>
+    <p *ngIf="posts.length === 0">No posts available</p>
+
 </mat-card>

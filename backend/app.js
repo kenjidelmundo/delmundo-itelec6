@@ -1,33 +1,45 @@
 const express = require("express");
-const cors = require("cors");
-
 const app = express();
+const bodyParser = require('body-parser')
 
-app.use(cors());
-app.use(express.json());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
 
-app.get("/", (req, res) => {
-    res.send("Server is running!");
-});
+app.use((req,res, next) =>{
+    res.setHeader('Access-Control-Allow-Origin', "*");
+    res.setHeader("Access-Control-Allow-Headers",
+        "Origin, X-Requested-Width, Content-Type, Accept"
+    );
+    res.setHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, DELETE, OPTIONS");
+    next();
+})
 
-app.get("/api/posts", (req, res) => {
+app.post("/api/posts", (req, res, next)=> {
+    const post = req.body;
+    console.log(post);
+    res.status(201).json({
+        message: 'Post added successfully'
+    });
+})
+
+app.get("/api/posts", (req, res, next) =>{
     const posts = [
         {
-            id: "eoiyaruia",
-            title: "First title from server-side",
-            content: "First content from server-side"
+            id: "maski ano",
+            title: "Pers Taytol",
+            content: "Del Mundo Kenji Mina! Segi segi"
         },
         {
-            id: "ehaklajle",
-            title: "Second title from server-side",
-            content: "Second content from server-side"
+            id: "maski ano man",
+            title: "Sikond Taytol",
+            content: "Kenji Del Mundo from Arimbay!"
         }
     ];
-
     res.status(200).json({
-        message: "Posts successfully fetched",
-        posts: posts
-    });
+    message: "Post retrieved successfully",
+    posts: posts
+});
 });
 
-module.exports = app; 
+
+module.exports = app;
